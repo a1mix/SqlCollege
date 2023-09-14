@@ -1,7 +1,7 @@
 -- college.good_category definition
 
 CREATE TABLE `good_category` (
-  `id_category` int NOT NULL,
+  `id_category` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id_category`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -10,7 +10,7 @@ CREATE TABLE `good_category` (
 -- college.order_status definition
 
 CREATE TABLE `order_status` (
-  `id_status` int NOT NULL,
+  `id_status` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id_status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -35,7 +35,7 @@ CREATE TABLE `users` (
 -- college.goods definition
 
 CREATE TABLE `goods` (
-  `id_good` int NOT NULL,
+  `id_good` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `availability` tinyint(1) NOT NULL,
   `user_id_seller` int NOT NULL,
@@ -67,7 +67,7 @@ CREATE TABLE `liked_goods` (
 CREATE TABLE `orders` (
   `user_id` int NOT NULL,
   `good_id` int NOT NULL,
-  `amount` varchar(45) NOT NULL,
+  `amount` int NOT NULL,
   `status_id` int NOT NULL,
   `total_sum` float NOT NULL,
   PRIMARY KEY (`user_id`,`good_id`),
@@ -126,7 +126,7 @@ CREATE TABLE `feedbacks` (
   `rating` int NOT NULL,
   `pros` varchar(255) NOT NULL,
   `cons` varchar(255) NOT NULL,
-  `description` longtext NOT NULL,
+  `description` varchar(255) NOT NULL,
   PRIMARY KEY (`user_id`,`good_id`),
   KEY `good_id` (`good_id`),
   CONSTRAINT `feedbacks_ibfk_1` FOREIGN KEY (`good_id`) REFERENCES `goods` (`id_good`),

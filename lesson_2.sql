@@ -1,11 +1,11 @@
 CREATE TABLE `good_category` (
-  `id_category` int NOT NULL,
+  `id_category` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id_category`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 CREATE TABLE `order_status` (
-  `id_status` int NOT NULL,
+  `id_status` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id_status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -24,7 +24,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 CREATE TABLE `goods` (
-  `id_good` int NOT NULL,
+  `id_good` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `availability` boolean NOT NULL,
   `user_id_seller` int NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE `goods` (
 CREATE TABLE `orders` (
   `user_id` int NOT NULL,
   `good_id` int NOT NULL,
-  `amount` varchar(45) NOT NULL,
+  `amount` int NOT NULL,
   `status_id` int NOT NULL,
   `total_sum` FLOAT NOT NULL,
   PRIMARY KEY (`user_id`,`good_id`),
@@ -63,7 +63,7 @@ CREATE TABLE `feedbacks` (
   `rating` int NOT NULL,
   `pros` varchar(255) NOT NULL,
   `cons` varchar(255) NOT NULL,
-  `description` LONGTEXT NOT NULL,
+  `description` varchar(255) NOT NULL,
   PRIMARY KEY (`user_id`,`good_id`),
   FOREIGN KEY (`good_id`) REFERENCES `goods` (`id_good`),
   FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`)
